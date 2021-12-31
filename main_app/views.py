@@ -20,10 +20,19 @@ class Car:  # Note that parens are optional if not inheriting from another class
     self.mileage = mileage
 
 cars = [
-  Car('Lolo', 'Accord', 'Honda', 3000),
-  Car('Sachi', 'Camry', 'Toyota', 1500),
-  Car('Fancy', 'G37', 'Infinity', 400),
-  Car('Bonk', 'M2', 'Bmw', 600),
+  Car('Sagun', 'Accord', 'Honda', 3000),
+  Car('Dipa', 'Camry', 'Toyota', 1500),
+  Car('Ben', 'G37', 'Infinity', 400),
+  Car('Jurgen', 'Leaf', 'Nissan', 600),
+  Car('Erik', 'Fx', 'Tesla', 5500),
+  Car('Elon', 'M2', 'Bmw', 6500),
+  Car('Patricia', 'M3', 'Bmw', 6500),
+  Car('Rajesh', 'Escape', 'Ford', 3300),
+  Car('Durg', 'Tahoe', 'Chevy', 7700),
+  Car('Fancy', 'Miata', 'Mazda', 400),
+  Car('Jordan', 'xod', 'Hummer', 6700),
+  Car('Jira', 'fast', 'Ferrari', 11100),
+  Car('Som', 'Veneno', 'Lamborgini', 2200),
 ]
 
 
