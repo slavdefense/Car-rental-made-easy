@@ -18,6 +18,8 @@
 <section class="card-container">
   {% for car in cars %}
     <div class="card">
+
+    <a href={% url 'cars_detail' car.id %}>     
       <div class="card-content">
         <div class="card-img-container">
           <img 
@@ -33,6 +35,7 @@
         {% endif %}
         <p><small> Mileage: {{ car.mileage }}</small></p>
       </div>
+    </a>
     </div>
   {% endfor %}
 </section>

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet" 
+  type="text/css" 
+  href="{% static 'css/car-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="car-container">
+  <div class="car-img">
+    <img 
+      src="{% static 'images/sk8r-boi-car.svg' %}" 
+      alt="A very nice car"
+    >
+  </div>
+  <div class="car-details">
+    <h1> Owner of car:{{ car.name }}</h1>
+    {% if car.mileage > 10000 %}
+      <h2>A {{ car.model }} mileage: {{ car.mileage }}</h2>
+    {% else %}
+      <h2>A like new {{ car.brand }} Car.</h2>
+    {% endif %}
+    <p> Mileage is just {{ car.mileage }}</p>
+  </div>
+</section>
+
+{% endblock %}
