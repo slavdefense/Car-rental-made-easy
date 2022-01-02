@@ -36,3 +36,7 @@ class CarUpdate(UpdateView):
 class CarDelete(DeleteView):
   model = Car
   success_url='/cars/'
+
+def cars_rent(request,car_id):
+  car=Car.objects.get(id=car_id)
+  return render(request,'cars/rent.html',{'car':car})

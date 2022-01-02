@@ -37,6 +37,7 @@
         <p><small> Price/day: ${{ car.price }} </small></p>
       </div>
     </a>
+    <a href={% url 'cars_rent' car.id %}><p>Rent</p></a>
     </div>
   {% endfor %}
 </section>
