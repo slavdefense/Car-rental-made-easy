@@ -10,7 +10,8 @@ urlpatterns = [
   path('cars/create/',views.CarCreate.as_view(),name='cars_create'),
   path('cars/<int:pk>/update/',views.CarUpdate.as_view(), name='cars_update'),
   path('cars/<int:pk>/delete/',views.CarDelete.as_view(), name='cars_delete'),
-  path('cars/<int:car_id>/rent/',views.cars_rent,name='cars_rent')
+  path('cars/<int:car_id>/rent/',views.cars_rent,name='cars_rent'),
+  path('cars/<int:car_id>/add_rent',views.add_rent,name='add_rent'),
 
 ]
 

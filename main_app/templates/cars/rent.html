@@ -2,11 +2,25 @@
 {% load static %}
 
 {% block head %}
+
+<link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+  rel="stylesheet" 
+/>
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+>
+</script>
+
+
+
+
 <link 
   rel="stylesheet" 
   type="text/css" 
   href="{% static 'css/car-detail.css' %}"
 />
+<script defer src="{% static 'js/car-rent.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -56,6 +70,23 @@
         alt="A kabob of kittens"
       />
     </div>
+
+    <h3>Choose A rental date</h3>
+    <form
+      action="{% url 'add_rent' car.id %}"
+      method="post" 
+      class="subsection-content"
+    >
+      {% csrf_token %}
+      {{ renting_form.as_p }}
+      <button type="submit" class="btn submit">Submit Reservation</button>
+    </form>
+    <h3>Current rental periods for this Vehicle</h3>
+
+
+
+    {% if car.rent_set.all.count %}
+
     <table>
       <thead>
         <tr><th>Date</th><th>Insurance</th></tr>
@@ -69,6 +100,9 @@
         {% endfor %}
       </tbody>
     </table>
+    {% else %}
+    <p class="subsection-content">{{car.name}}'s car has never been rented 😟</p>
+  {% endif %}
   </section>
 </div>
 

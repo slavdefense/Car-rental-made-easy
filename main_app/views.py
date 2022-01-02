@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from .models import Car
+from .forms import RentingForm
 
 
 # Create your views here.
@@ -24,6 +25,14 @@ def cars_detail(request,car_id):
   car = Car.objects.get(id=car_id)
   return render(request,'cars/detail.html',{'car':car})
 
+def add_rent(request,car_id):
+  form = RentingForm(request.POST)
+  if form.is_valid():
+    new_rent=form.save(commit=False)
+    new_rent.car_id=car_id
+    new_rent.save()
+  return redirect('cars_rent',car_id=car_id)
+
 
 class CarCreate(CreateView):
   model = Car
@@ -39,4 +48,5 @@ class CarDelete(DeleteView):
 
 def cars_rent(request,car_id):
   car=Car.objects.get(id=car_id)
-  return render(request,'cars/rent.html',{'car':car})
+  renting_form = RentingForm()
+  return render(request,'cars/rent.html',{'car':car,'renting_form':renting_form})
