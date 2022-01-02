@@ -42,5 +42,5 @@ class Promocode(models.Model):
     return self.name
   
   def get_absolute_url(self):
-      return reverse("codes_detail", kwargs={"pk": self.id})
+      return reverse("promocodes_detail", kwargs={"pk": self.id})
   

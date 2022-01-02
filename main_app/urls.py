@@ -13,7 +13,8 @@ urlpatterns = [
   path('cars/<int:car_id>/rent/',views.cars_rent,name='cars_rent'),
   path('cars/<int:car_id>/add_rent',views.add_rent,name='add_rent'),
   path('promocode/create/',views.PromoCreate.as_view(),name='promos_create'),
-  
+  path('promocode/<int:pk>/',views.PromocodeDetail.as_view(),name='promocodes_detail'),
+  path('promocode/',views.PromocodeList.as_view(),name='promocodes_index'),
 
 ]
 

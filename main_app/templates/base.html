@@ -13,7 +13,7 @@
     href=""
   >
   <title>Rent a Car</title>
-  {% comment %} <link rel="stylesheet" type="image/jpeg" href="{% static 'images/tesla.jpeg' %}"> {% endcomment %}
+ 
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 
   {% block head %}
@@ -35,6 +35,8 @@
         <li><a href={% url 'about' %}>About</a></li>
         <li><a href={% url 'cars_create' %}> Add a car</a></li>
         <li><a href={% url 'promos_create' %}> Promo Codes</a></li>
+        <li><a href={% url 'promocodes_index' %}> All Codes</a></li>
+      
       </ul>
     </nav>
   </header>

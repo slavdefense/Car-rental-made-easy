@@ -8,7 +8,7 @@
 {% block content %}
 <div class="page-header">
   {% if object %}
-    <h1>Edit {{object.name}}</h1>
+    <h1>Edit {{object.code}}</h1>
   {% else %}
     <h1>Add a Promo</h1>
   {% endif %}
@@ -22,7 +22,7 @@
   <button type="submit" class="btn submit">Submit!</button>
 </form>
 
-
+{% comment %} 
 <section class="page-header">
   <h1>All Promocodes</h1>
   <img src="{% static 'images/string.svg' %}" alt="A ball of string" />
@@ -43,6 +43,6 @@
     </a>
   </div>
   {% endfor %}
-</section>
+</section> {% endcomment %}
 
 {% endblock %}
