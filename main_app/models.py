@@ -33,3 +33,14 @@ class Rent (models.Model):
     return f"{self.get_insurance_display()} on {self.date}"
   class Meta:
     ordering=['-date']
+
+
+class Promocode(models.Model):
+  code = models.CharField(max_length=10)
+
+  def __str__(self):
+    return self.name
+  
+  def get_absolute_url(self):
+      return reverse("codes_detail", kwargs={"pk": self.id})
+  

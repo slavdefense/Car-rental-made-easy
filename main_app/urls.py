@@ -12,6 +12,7 @@ urlpatterns = [
   path('cars/<int:pk>/delete/',views.CarDelete.as_view(), name='cars_delete'),
   path('cars/<int:car_id>/rent/',views.cars_rent,name='cars_rent'),
   path('cars/<int:car_id>/add_rent',views.add_rent,name='add_rent'),
+  path('promocode/create/',views.PromoCreate.as_view(),name='promos_create')
 
 ]
 

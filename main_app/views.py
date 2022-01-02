@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
-from .models import Car
+from .models import Car,Promocode
 from .forms import RentingForm
 
 
@@ -8,6 +8,9 @@ from .forms import RentingForm
 # from django.http import HttpResponse
 
 # Define the home view
+
+
+
 def home(request):
   return render(request, 'home.html')
 
@@ -46,7 +49,13 @@ class CarDelete(DeleteView):
   model = Car
   success_url='/cars/'
 
+class PromoCreate(CreateView):
+  model = Promocode
+  fields='__all__'
+
 def cars_rent(request,car_id):
   car=Car.objects.get(id=car_id)
   renting_form = RentingForm()
   return render(request,'cars/rent.html',{'car':car,'renting_form':renting_form})
+
+
