@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from .models import Car,Promocode
 from .forms import RentingForm
-
+from django.views.generic import ListView
 
 # Create your views here.
 # from django.http import HttpResponse
@@ -59,3 +59,5 @@ def cars_rent(request,car_id):
   return render(request,'cars/rent.html',{'car':car,'renting_form':renting_form})
 
 
+class PromocodeList(ListView):
+  model = Promocode
