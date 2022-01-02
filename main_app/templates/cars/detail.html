@@ -26,6 +26,13 @@
       <h2>A like new {{ car.brand }} Car.</h2>
     {% endif %}
     <p> Mileage is just {{ car.mileage }}</p>
+    <div class='car-actions'>
+
+      <a href={% url 'cars_update' car.id%}>Edit</a>
+      <a href={% url 'cars_delete' car.id%}>Delete</a>
+
+    </div>
+
   </div>
 </section>
 

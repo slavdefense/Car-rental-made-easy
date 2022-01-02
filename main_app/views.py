@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from .models import Car
+
 
 # Create your views here.
 # from django.http import HttpResponse
@@ -27,4 +28,11 @@ def cars_detail(request,car_id):
 class CarCreate(CreateView):
   model = Car
   fields = '__all__'
-  success_url = '/cars/'
+
+class CarUpdate(UpdateView):
+  model =  Car
+  fields= '__all__'
+
+class CarDelete(DeleteView):
+  model = Car
+  success_url='/cars/'
