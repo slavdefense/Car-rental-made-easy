@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Car
 
 # Create your views here.
@@ -21,3 +22,9 @@ def cars_index(request):
 def cars_detail(request,car_id):
   car = Car.objects.get(id=car_id)
   return render(request,'cars/detail.html',{'car':car})
+
+
+class CarCreate(CreateView):
+  model = Car
+  fields = '__all__'
+  success_url = '/cars/'

@@ -7,6 +7,7 @@ urlpatterns = [
   path('about/',views.about, name='about'),
   path('cars/',views.cars_index,name='cars_index'),
   path('cars/<int:car_id>/',views.cars_detail,name='cars_detail'),
+  path('cars/create/',views.CarCreate.as_view(),name='cars_create'),
 
 ]
 
