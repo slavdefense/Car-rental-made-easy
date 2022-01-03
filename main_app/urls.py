@@ -15,6 +15,7 @@ urlpatterns = [
   path('promocode/create/',views.PromoCreate.as_view(),name='promos_create'),
   path('promocode/<int:pk>/',views.PromocodeDetail.as_view(),name='promocodes_detail'),
   path('promocode/',views.PromocodeList.as_view(),name='promocodes_index'),
+  path('accounts/signup/', views.signup, name='signup'),
 
 ]
 

@@ -17,6 +17,7 @@ class Car (models.Model):
   brand = models.TextField(max_length=250)
   mileage = models.IntegerField(blank = True)
   price = models.IntegerField(blank = True)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
   def __str__(self):
@@ -35,7 +36,7 @@ class Rent (models.Model):
     default=INSURANCES[0][0])
   promocode=models.CharField(max_length=15)
   car = models.ForeignKey(Car,on_delete=models.CASCADE)
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
     return f"{self.get_insurance_display()} on {self.date}"

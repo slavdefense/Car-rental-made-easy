@@ -89,7 +89,7 @@
 
     <table>
       <thead>
-        <tr><th>SDate</th><th>EDate</th><th>Insurance</th><th>Price</th></tr>
+        <tr><th>SDate</th><th>EDate</th><th>Insurance</th><th>Price</th><th>Renter</th></tr>
       </thead>
       <tbody>
         {% for rent in car.rent_set.all %}
@@ -99,6 +99,7 @@
            
             <td>{{rent.get_insurance_display}}</td>
             <td>{{car.price}}</td>
+            <td>{{car.user}}</td>
           </tr>
         {% endfor %}
       </tbody>
