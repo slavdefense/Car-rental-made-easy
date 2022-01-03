@@ -89,13 +89,16 @@
 
     <table>
       <thead>
-        <tr><th>Date</th><th>Insurance</th></tr>
+        <tr><th>SDate</th><th>EDate</th><th>Insurance</th><th>Price</th></tr>
       </thead>
       <tbody>
         {% for rent in car.rent_set.all %}
           <tr>
             <td>{{rent.date}}</td>
+            <td>{{rent.date}}</td>
+           
             <td>{{rent.get_insurance_display}}</td>
+            <td>{{car.price}}</td>
           </tr>
         {% endfor %}
       </tbody>

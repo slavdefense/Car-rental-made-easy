@@ -31,11 +31,18 @@
     </div>
     <nav>
       <ul>
+        {% if user.is_authenticated %}
         <li><a href={% url 'cars_index'%}>All cars</a></li>
         <li><a href={% url 'about' %}>About</a></li>
         <li><a href={% url 'cars_create' %}> Add a car</a></li>
         <li><a href={% url 'promos_create' %}> Promo Codes</a></li>
         <li><a href={% url 'promocodes_index' %}> All Codes</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'logout' %}">Log out</a></li>
+        {% else %}
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'home' %}">Login</a></li>
+        {% endif %}
       
       </ul>
     </nav>

@@ -3,16 +3,16 @@ from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from .models import Car,Promocode
 from .forms import RentingForm
 from django.views.generic import ListView,DeleteView,DetailView
-
+from django.contrib.auth.views import LoginView
 # Create your views here.
 # from django.http import HttpResponse
 
 # Define the home view
 
 
+class Home(LoginView):
+  template_name = 'home.html'
 
-def home(request):
-  return render(request, 'home.html')
 
 
 def about(request):
