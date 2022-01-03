@@ -2,6 +2,7 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
+
 from django.contrib.auth.models import User
 # Create your models here.
 INSURANCES = (
@@ -36,7 +37,7 @@ class Rent (models.Model):
     default=INSURANCES[0][0])
   promocode=models.CharField(max_length=15)
   car = models.ForeignKey(Car,on_delete=models.CASCADE)
-  # user = models.ForeignKey(User, on_delete=models.CASCADE)
+  user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
 
   def __str__(self):
     return f"{self.get_insurance_display()} on {self.date}"
@@ -52,4 +53,21 @@ class Promocode(models.Model):
   
   def get_absolute_url(self):
       return reverse("promocodes_detail", kwargs={"pk": self.id})
-  
+
+
+class Profile(models.Model):
+    # # admin view only???
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True,)
+    address1 = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=2)
+    zipcode = models.CharField(max_length=5)
+
+    def __str__(self):
+      # Nice method for obtaining the friendly value of a Field.choice
+      return f"ID#:{self.user.id} - {self.user.first_name} {self.user.last_name}"
+
+class Meta:
+        managed = False
+        db_table = 'profile' 
+

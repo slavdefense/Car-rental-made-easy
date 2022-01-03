@@ -42,16 +42,31 @@
     <p> Mileage is just {{ car.mileage }}</p>
     <div class='car-actions'>
 
-    
+    </div>
 
-      {% comment %} <a href={% url 'cars_update' car.id%}>Edit</a>
-      <a href={% url 'cars_delete' car.id%}>Delete</a> {% endcomment %}
+  </div>
+</section>
+<section class="car-container">
+  <div class="car-img">
+    <img 
+      src="{% static 'images/sk8r-boi-car.svg' %}" 
+      alt="A very nice car"
+    >
+  </div>
+  <div class="car-details">
+    <h1> Car title:{{car.brand}} {{ car.model }} </h1>
+    
+      <h2>A {{ car.model }} mileage: {{ car.mileage }}</h2>
+    
+      <h2>A like new {{ car.brand }} Car.</h2>
+   
+    <p> Mileage is just {{ car.mileage }}</p>
+    <div class='car-actions'>
 
     </div>
 
   </div>
 </section>
-
 
 <div class="feedings-toy-container">
   <section class="feedings">
@@ -108,6 +123,30 @@
     <p class="subsection-content">{{car.name}}'s car has never been rented 😟</p>
   {% endif %}
   </section>
+
+
+
 </div>
+
+
+<div class="container forms">
+  <!-- New if/else block -->
+    
+      <h1>Edit <span class="teal-text">{{new_profile.user_id}}'s Profile</span></h1>
+    
+      <h1>Add Car</h1>
+   
+    <!-- Leaving the action empty makes the form post to the same url used to display it -->
+    <form action="" method="post">
+      <!-- Django requires the following for security purposes -->
+      {% csrf_token %}
+      <table>
+        <!-- Render the inputs inside of <tr>s & <td>s -->
+          
+          {{ form.as_p }}
+      </table>
+      <input type="submit" value="Submit!" class="btn">
+    </form>
+  </div> 
 
 {% endblock %}

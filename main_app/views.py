@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from .models import Car,Promocode
-from .forms import RentingForm
+from .forms import ProfileForm, RentingForm
 from django.views.generic import ListView,DeleteView,DetailView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
@@ -32,6 +32,8 @@ def cars_detail(request,car_id):
 
 
 def add_rent(request,car_id):
+
+
   form = RentingForm(request.POST)
 
   if form.is_valid():
@@ -64,8 +66,26 @@ class PromoCreate(CreateView):
 
 def cars_rent(request,car_id):
   car=Car.objects.get(id=car_id)
+  profile_form=ProfileForm(request.POST)
   renting_form = RentingForm()
-  return render(request,'cars/rent.html',{'car':car,'renting_form':renting_form})
+  if profile_form.is_valid(): 
+      # do stuff here
+      # form = ProfileForm(request.POST)
+        new_profile = profile_form.save(commit=False)
+        new_profile.car_id = car_id
+        new_profile.user_id = request.user.id
+        new_profile.save()
+      # do stuff here
+  if renting_form.is_valid():   
+      # form = rentingForm(request.POST)
+        new_renting = renting_form.save(commit=False)
+        new_renting.car_id = car_id
+        new_renting.user_id = request.user
+        new_renting.creator = request.user
+        new_renting.save()
+  
+
+  return render(request,'cars/rent.html',{'car':car,'renting_form':renting_form,'profile_form':profile_form})
 
 
 class PromocodeList(ListView):
