@@ -22,6 +22,7 @@ def about(request):
 
 
 def cars_index(request):
+  print('index page!')
   cars = Car.objects.all()
   return render(request,'cars/index.html',{'cars':cars})
 
@@ -31,19 +32,22 @@ def cars_detail(request,car_id):
   return render(request,'cars/detail.html',{'car':car})
 
 
-def add_rent(request,car_id):
-
-
+def add_rent(request,car_id,user_id):
+  
+  # car=Car.objects.get(id=car_id)
   form = RentingForm(request.POST)
 
   if form.is_valid():
     new_rent=form.save(commit=False)
     new_rent.car_id=car_id
+    new_rent.user_id=user_id
     new_rent.save()
-  return redirect('cars_rent',car_id=car_id)
+    
+  return redirect('cars_rent',car_id=car_id,user_id=user_id)
 
 
 class CarCreate(CreateView):
+  
   model = Car
   fields = '__all__'
   def form_valid(self, form):
@@ -65,25 +69,30 @@ class PromoCreate(CreateView):
   fields='__all__'
 
 def cars_rent(request,car_id):
+  
+  # print('hi')
   car=Car.objects.get(id=car_id)
+  
   profile_form=ProfileForm(request.POST)
-  renting_form = RentingForm()
+ 
+  renting_form = RentingForm(request.POST)
   if profile_form.is_valid(): 
-      # do stuff here
-      # form = ProfileForm(request.POST)
+    
         new_profile = profile_form.save(commit=False)
         new_profile.car_id = car_id
         new_profile.user_id = request.user.id
         new_profile.save()
-      # do stuff here
+       
+       
+   
   if renting_form.is_valid():   
-      # form = rentingForm(request.POST)
+      
         new_renting = renting_form.save(commit=False)
         new_renting.car_id = car_id
         new_renting.user_id = request.user
         new_renting.creator = request.user
         new_renting.save()
-  
+       
 
   return render(request,'cars/rent.html',{'car':car,'renting_form':renting_form,'profile_form':profile_form})
 

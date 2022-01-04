@@ -17,5 +17,7 @@ urlpatterns = [
   path('promocode/',views.PromocodeList.as_view(),name='promocodes_index'),
   path('accounts/signup/', views.signup, name='signup'),
 
+  # new user form
+  path('cars/<int:user_id>/add_user',views.add_rent,name='add_user'),
 ]
 
