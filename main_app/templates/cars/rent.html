@@ -27,10 +27,10 @@
 
 <section class="car-container">
   <div class="car-img">
-    <img 
+    {% comment %} <img 
       src="{% static 'images/sk8r-boi-car.svg' %}" 
       alt="A very nice car"
-    >
+    > {% endcomment %}
   </div>
   <div class="car-details">
     <h1> Car title:{{car.brand}} {{ car.model }} </h1>
@@ -52,23 +52,23 @@
   <section class="feedings">
     <div class="subsection-title">
       <h2>Rental</h2>
-      <img 
+      {% comment %} <img 
         src="{% static 'images/cat-cone.svg' %}" 
         alt="your car"
-      />
-      <img 
+      /> {% endcomment %}
+      {% comment %} <img 
         src="{% static 'images/cat-onigiri.svg' %}"
         alt="A cat as onigiri"
       />
       <img 
         src="{% static 'images/kitty-kabob.svg' %}" 
         alt="A kabob of kittens"
-      />
+      /> {% endcomment %}
     </div>
 
     <h3>Choose A rental date</h3>
     <form
-      action="{% url 'add_rent' car.id %}"
+      action="{% url 'add_rent' car.id  %}"
       method="post" 
       class="subsection-content"
     >
@@ -79,7 +79,7 @@
 
 
 
-    <form
+    {% comment %} <form
     action="{% url 'add_user' user.id %}"
     method="post" 
     class="subsection-content"
@@ -87,7 +87,7 @@
     {% csrf_token %}
     {{ profile_form.as_p }}
     <button type="submit" class="btn submit">Submit your info</button>
-  </form>
+  </form> {% endcomment %}
 
 
 
@@ -104,17 +104,21 @@
 
     <table>
       <thead>
-        <tr><th>SDate</th><th>EDate</th><th>Insurance</th><th>Price</th><th>Renter</th></tr>
+        <tr><th>SDate</th><th>EDate</th><th>Insurance</th><th>Price</th><th>Renter</th><th>misc</th></tr>
       </thead>
       <tbody>
         {% for rent in car.rent_set.all %}
           <tr>
-            <td>{{rent.date}}</td>
-            <td>{{rent.date}}</td>
+            <td>{{rent.sdate}}</td>
+            <td>{{rent.edate}}</td>
            
             <td>{{rent.get_insurance_display}}</td>
-            <td>{{car.price}}</td>
-            <td>{{car.user}}</td>
+            <td>${{car.price}}/day</td>
+            {% comment %} <td>{{car.user}}</td> {% endcomment %}
+            <td>{{renter}}</td>
+
+           
+           {% comment %} <td>{{}}</td> {% endcomment %}
           </tr>
         {% endfor %}
       </tbody>
@@ -124,6 +128,7 @@
   {% endif %}
   </section>
 
+  
 
 
 </div>

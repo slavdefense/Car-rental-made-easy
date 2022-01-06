@@ -21,23 +21,26 @@
 </head>
 <body>
   <header>
-    <div class="header-logo-container">
-      <a href="/">
-        <img 
+    {% comment %} <div class="header-logo-container"> {% endcomment %}
+      {% comment %} <a href="/"> {% endcomment %}
+        {% comment %} <img 
           src="{% static '' %}" 
           alt="The car rental logo"
-        >
-      </a>
-    </div>
+        > {% endcomment %}
+      
+      {% comment %} </a> {% endcomment %}
+    {% comment %} </div> {% endcomment %}
     <nav>
       <ul>
         {% if user.is_authenticated %}
+
+        <li><a href="/">home</a></li>
         <li><a href={% url 'cars_index'%}>All cars</a></li>
         <li><a href={% url 'about' %}>About</a></li>
         <li><a href={% url 'cars_create' %}> Add a car</a></li>
         <li><a href={% url 'promos_create' %}> Promo Codes</a></li>
         <li><a href={% url 'promocodes_index' %}> All Codes</a></li>
-        <li><a href="{% url 'about' %}">About</a></li>
+        {% comment %} <li><a href="{% url 'about' %}">About</a></li> {% endcomment %}
             <li><a href="{% url 'logout' %}">Log out</a></li>
         {% else %}
             <li><a href="{% url 'about' %}">About</a></li>
@@ -49,6 +52,11 @@
     </nav>
   </header>
   <main>
+    {% comment %} <img 
+    src="{% static 'images/teslahome.jpeg' %}" 
+    alt="A photo of {{car.name}}"
+    class="usr-img"
+  > {% endcomment %}
     {% block content %}
     {% endblock %}
   </main>

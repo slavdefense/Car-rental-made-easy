@@ -18,6 +18,8 @@ class Car (models.Model):
   brand = models.TextField(max_length=250)
   mileage = models.IntegerField(blank = True)
   price = models.IntegerField(blank = True)
+  # car_image = models.ImageField(null=True,blank=True)
+
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
@@ -28,8 +30,9 @@ class Car (models.Model):
       return reverse("cars_detail", kwargs={"car_id": self.id})
   
 class Rent (models.Model):
-  date=models.DateField()
-  date=models.DateField()
+  sdate=models.DateField()
+  edate=models.DateField()
+  imageurl = models.CharField(max_length=200,null=True)
  
   
   insurance = models.CharField(max_length=1,
@@ -40,9 +43,9 @@ class Rent (models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
 
   def __str__(self):
-    return f"{self.get_insurance_display()} on {self.date}"
+    return f"{self.get_insurance_display()} insurance from {self.sdate} to {self.edate}"
   class Meta:
-    ordering=['-date']
+    ordering=['sdate']
 
 
 class Promocode(models.Model):
@@ -71,3 +74,9 @@ class Meta:
         managed = False
         db_table = 'profile' 
 
+class Photo(models.Model):
+  url = models.CharField(max_length=250)
+  car = models.OneToOneField(Car, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"Photo for car_id: {self.car_id} @{self.url}"

@@ -7,10 +7,15 @@ from .models import Profile
 class RentingForm(ModelForm):
   class Meta:
     model = Rent
-    fields = ['date','date','insurance','promocode']
+    fields = ['sdate','edate','insurance','promocode','imageurl']
 
 
 class ProfileForm(ModelForm):
   class Meta:
     model = Profile
     fields = [ 'address1', 'city', 'state', 'zipcode']
+
+# class SignUpForm(UserCreationForm):
+#     class Meta:
+#         model = User
+#         fields = ('first_name', 'last_name', 'email', 'password1', 'password2',)
