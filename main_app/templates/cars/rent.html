@@ -1,157 +1,96 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block head %}
 
-{% block head %}
-
-<link 
-  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
-  rel="stylesheet" 
+<link
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css"
+  rel="stylesheet"
 />
-<script 
-  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
->
-</script>
+<script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"></script>
 
-
-
-
-<link 
-  rel="stylesheet" 
-  type="text/css" 
+<link
+  rel="stylesheet"
+  type="text/css"
   href="{% static 'css/car-detail.css' %}"
 />
 <script defer src="{% static 'js/car-rent.js' %}"></script>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 
 <section class="car-container">
-  <div class="car-img">
-    {% comment %} <img 
-      src="{% static 'images/sk8r-boi-car.svg' %}" 
-      alt="A very nice car"
-    > {% endcomment %}
-  </div>
+  <div class="car-img"></div>
   <div class="car-details">
-    <h1> Car title:{{car.brand}} {{ car.model }} </h1>
-    
-      <h2>A {{ car.model }} mileage: {{ car.mileage }}</h2>
-    
-      <h2>A like new {{ car.brand }} Car.</h2>
-   
-    <p> Mileage is just {{ car.mileage }}</p>
-    <div class='car-actions'>
+    <h1>Car title:{{car.brand}} {{ car.model }}</h1>
 
-    </div>
+    <h2>A {{ car.model }} mileage: {{ car.mileage }}</h2>
 
+    <h2>A like new {{ car.brand }} Car.</h2>
+
+    <p>Mileage is just {{ car.mileage }}</p>
+    <div class="car-actions"></div>
   </div>
 </section>
-
 
 <div class="feedings-toy-container">
   <section class="feedings">
     <div class="subsection-title">
       <h2>Rental</h2>
-      {% comment %} <img 
-        src="{% static 'images/cat-cone.svg' %}" 
-        alt="your car"
-      /> {% endcomment %}
-      {% comment %} <img 
-        src="{% static 'images/cat-onigiri.svg' %}"
-        alt="A cat as onigiri"
-      />
-      <img 
-        src="{% static 'images/kitty-kabob.svg' %}" 
-        alt="A kabob of kittens"
-      /> {% endcomment %}
     </div>
 
     <h3>Choose A rental date</h3>
     <form
       action="{% url 'add_rent' car.id  %}"
-      method="post" 
+      method="post"
       class="subsection-content"
     >
-      {% csrf_token %}
-      {{ renting_form.as_p }}
+      {% csrf_token %} {{ renting_form.as_p }}
       <button type="submit" class="btn submit">Submit Reservation</button>
     </form>
 
-
-
-    {% comment %} <form
-    action="{% url 'add_user' user.id %}"
-    method="post" 
-    class="subsection-content"
-  >
-    {% csrf_token %}
-    {{ profile_form.as_p }}
-    <button type="submit" class="btn submit">Submit your info</button>
-  </form> {% endcomment %}
-
-
-
-
-
-
-
-
     <h3>Current rental periods for this Vehicle</h3>
-
-
 
     {% if car.rent_set.all.count %}
 
     <table>
       <thead>
-        <tr><th>SDate</th><th>EDate</th><th>Insurance</th><th>Price</th><th>Renter</th><th>misc</th></tr>
+        <tr>
+          <th>SDate</th>
+          <th>EDate</th>
+          <th>Insurance</th>
+          <th>Price</th>
+          <th>Renter</th>
+          <th>misc</th>
+        </tr>
       </thead>
       <tbody>
         {% for rent in car.rent_set.all %}
-          <tr>
-            <td>{{rent.sdate}}</td>
-            <td>{{rent.edate}}</td>
-           
-            <td>{{rent.get_insurance_display}}</td>
-            <td>${{car.price}}/day</td>
-            {% comment %} <td>{{car.user}}</td> {% endcomment %}
-            <td>{{renter}}</td>
-
-           
-           {% comment %} <td>{{}}</td> {% endcomment %}
-          </tr>
+        <tr>
+          <td>{{rent.sdate}}</td>
+          <td>{{rent.edate}}</td>
+          <td>{{rent.get_insurance_display}}</td>
+          <td>${{car.price}}/day</td>
+          <td>{{renter}}</td>
+        </tr>
         {% endfor %}
       </tbody>
     </table>
     {% else %}
-    <p class="subsection-content">{{car.name}}'s car has never been rented 😟</p>
-  {% endif %}
+    <p class="subsection-content">
+      {{car.name}}'s car has never been rented 😟
+    </p>
+    {% endif %}
   </section>
-
-  
-
-
 </div>
 
-
 <div class="container forms">
-  <!-- New if/else block -->
-    
-      <h1>Edit <span class="teal-text">{{new_profile.user.id}}'s Profile</span></h1>
-    
-      <h1>Add Car</h1>
-   
-    <!-- Leaving the action empty makes the form post to the same url used to display it -->
-    <form action="" method="post">
-      <!-- Django requires the following for security purposes -->
-      {% csrf_token %}
-      <table>
-        <!-- Render the inputs inside of <tr>s & <td>s -->
-          
-          {{ form.as_p }}
-      </table>
-      <input type="submit" value="Submit!" class="btn">
-    </form>
-  </div> 
+  <h1>Edit <span class="teal-text">{{new_profile.user.id}}'s Profile</span></h1>
+
+  <h1>Add Car</h1>
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <table>
+      {{ form.as_p }}
+    </table>
+    <input type="submit" value="Submit!" class="btn" />
+  </form>
+</div>
 
 {% endblock %}

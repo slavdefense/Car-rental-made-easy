@@ -7,23 +7,15 @@
 
 {% block content %}
 
-
-
-<section class="logo-container" >
-
-
-  {% comment %} <div class="cat-container">
-    <img src="{% static 'images/teslahome.jpeg' %}" alt="The Car Lister;/renter" />
-   
-  </div> {% endcomment %}
-  {% comment %} <img 
-    src="{% static 'images/logotype.svg' %}" 
-    alt="Text reads: Car Rentals"
-  /> {% endcomment %}
-</section>
    {% if not user.is_authenticated %}
 
-<section>
+<section class='sec'>
+  <h1>AIR BNB FOR CARS</h1>
+  <img 
+      src="{% static 'images/teslahome.jpeg' %}" 
+      alt="A tesla car"
+      class="background-image"
+    >
   <form action="{% url 'home' %}" method="post" class="login">
     <h1>Login</h1>
     {% csrf_token %}
@@ -32,5 +24,14 @@
     <button type="submit" class="btn submit">Login</button>
   </form>
 </section>
+{% else %}
+<section class="sec">
+  <img 
+  src="{% static 'images/teslahome.jpeg' %}" 
+  alt="A tesla car"
+  class="background-image"
+>
+</section>
+
    {% endif %}
 {% endblock %}

@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  
+  background-color: #ffc6ff;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -55,6 +55,7 @@ header {
 
 nav {
   margin: 10px;
+ 
 }
 
 ul {
