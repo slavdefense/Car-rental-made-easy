@@ -33,6 +33,9 @@ Renting
 
  ![Getting Started](/images/rentcars.png)
 
+
+ Click <a href="https://rentorlistcars.herokuapp.com/">here </a> to load the app.
+
 <h3>List of technologies</h3>
 
 <li>Python</li>
