@@ -1,4 +1,5 @@
 
+
 nav {
   margin-top: 10px;
 }
@@ -8,6 +9,8 @@ nav {
   height: 80vh;
 
 }
+
+
 
 main {
   display: flex;
@@ -63,11 +66,18 @@ main > section {
   margin-top: -400px;
 }
 
-.login h1 {
+/* .login h1 {
   font-size: clamp(1.8rem, 3vw, 3rem);
-  margin: 10px 0 16px 0;
+  margin: 40px 0 16px 0;
+} */
+.titlehead{
+  font-size: 5rem;
+  margin-top: -390px;
+  position: absolute;
+  color:#f72585 ;
+  font-family: 'Vujahday Script', cursive;
+  font-size: 60px;
 }
-
 .login > p {
   display: flex;
   flex-direction: column;
@@ -113,7 +123,9 @@ main > section {
 
 @media only screen and (min-width: 1024px) {
   nav {
-    margin-top: 0;
+    margin-top: 70px;
+    margin-right: 330px;
+    border-radius: none;
   }
 
   main > section {

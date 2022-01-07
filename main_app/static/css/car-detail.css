@@ -9,10 +9,13 @@
 }
 
 .car-img-detail {
-  width: 25%;
-  width: 100px;
+  /* width: 25%; */
+  width: 800px;
   /* max-width: 350px; */
-  height:200px;
+  height:300px;
+}
+.user-img{
+  width:100%;
 }
 
 .usr-img {
@@ -215,6 +218,11 @@
 }
 
 
+.btn{
+  margin-top: 30px;
+}
+
+
 @media only screen and (min-width: 768px) {
   .car-container {
     padding: 35px 30px;
@@ -223,11 +231,11 @@
     justify-content: start;
   }
 
-  .car-img {
+  /* .car-img {
     width: 25%;
     max-width: 250px;
     margin-right: 25px;
-  }
+  } */
 
   .feedings-toy-container {
     flex-direction: row;

@@ -12,6 +12,9 @@
     type="image/png"
     href=""
   >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap" rel="stylesheet">
   <title>Rent a Car</title>
  
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
@@ -21,26 +24,18 @@
 </head>
 <body>
   <header>
-    {% comment %} <div class="header-logo-container"> {% endcomment %}
-      {% comment %} <a href="/"> {% endcomment %}
-        {% comment %} <img 
-          src="{% static '' %}" 
-          alt="The car rental logo"
-        > {% endcomment %}
-      
-      {% comment %} </a> {% endcomment %}
-    {% comment %} </div> {% endcomment %}
+   
     <nav>
       <ul>
         {% if user.is_authenticated %}
 
-        <li><a href="/">home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href={% url 'cars_index'%}>All cars</a></li>
         <li><a href={% url 'about' %}>About</a></li>
         <li><a href={% url 'cars_create' %}> Add a car</a></li>
         <li><a href={% url 'promos_create' %}> Promo Codes</a></li>
         <li><a href={% url 'promocodes_index' %}> All Codes</a></li>
-        {% comment %} <li><a href="{% url 'about' %}">About</a></li> {% endcomment %}
+       
             <li><a href="{% url 'logout' %}">Log out</a></li>
         {% else %}
             <li><a href="{% url 'about' %}">About</a></li>
